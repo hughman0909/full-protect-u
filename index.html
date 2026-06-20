@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Protect You — Stay dry. Everywhere.</title>
+<meta name="description" content="Rain no longer comes only from above. Full Protect You — the next-gen dome umbrella that shields your whole body.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0612;
+    --bg2:#140a24;
+    --ink:#f4eefb;
+    --muted:#a193b8;
+    --pink:#ff3d9a;
+    --cyan:#2ff0ff;
+    --amber:#ffc24d;
+    --glass:rgba(255,255,255,.06);
+    --line:rgba(255,255,255,.12);
+    --display:"Zen Dots",sans-serif;
+    --jp:"Sora",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--jp);
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 700px at 50% -10%, rgba(255,61,154,.18), transparent 60%),
+      radial-gradient(900px 600px at 90% 20%, rgba(47,240,255,.12), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    background-attachment:fixed;
+    min-height:100vh;
+    overflow-x:hidden;
+    line-height:1.7;
+  }
+
+  /* rain */
+  .rain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;overflow:hidden}
+  .rain span{
+    position:absolute;top:-20vh;width:1px;height:90px;
+    background:linear-gradient(transparent,rgba(180,200,255,.55));
+    animation:fall linear infinite;
+  }
+  @keyframes fall{to{transform:translateY(130vh)}}
+
+  .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* hero */
+  header{padding:88px 0 56px;text-align:center;position:relative}
+  .eyebrow{
+    font-family:var(--display);font-size:.7rem;letter-spacing:.32em;
+    color:var(--cyan);text-transform:uppercase;margin-bottom:26px;
+    text-shadow:0 0 18px rgba(47,240,255,.6);
+  }
+  .logo{
+    font-family:var(--display);
+    font-size:clamp(2.4rem,7vw,4.6rem);
+    line-height:1.05;letter-spacing:.01em;
+    background:linear-gradient(92deg,#fff,#ffd6ec 40%,var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 26px rgba(255,61,154,.45));
+  }
+  .tagline{font-weight:900;font-size:clamp(1.4rem,4.5vw,2.4rem);margin:18px 0 10px}
+  .sub{color:var(--muted);font-size:1.02rem;max-width:34ch;margin:0 auto}
+
+  /* hero image (signature) */
+  .hero-shot{margin:46px auto 8px;max-width:880px;position:relative}
+  .hero-shot img{
+    width:100%;height:auto;display:block;border-radius:20px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 70px rgba(47,240,255,.12);
+  }
+  .hero-shot::after{ /* soft neon vignette so text/edges blend */
+    content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
+    box-shadow:inset 0 -60px 90px rgba(10,6,18,.7);
+  }
+
+  /* sections */
+  section{padding:44px 0}
+  .kicker{font-family:var(--display);font-size:.66rem;letter-spacing:.28em;color:var(--pink);text-transform:uppercase;margin-bottom:8px}
+  h2{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;margin-bottom:26px}
+
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{
+    background:var(--glass);border:1px solid var(--line);border-radius:18px;
+    padding:26px 22px;backdrop-filter:blur(6px);
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(47,240,255,.5);box-shadow:0 18px 40px rgba(47,240,255,.12)}
+  .num{font-family:var(--display);font-size:.8rem;color:var(--cyan);letter-spacing:.1em}
+  .card h3{font-size:1.16rem;font-weight:700;margin:12px 0 8px}
+  .card p{color:var(--muted);font-size:.94rem}
+
+  /* price / hype */
+  .price-box{
+    text-align:center;border:1px solid var(--line);border-radius:22px;
+    padding:40px 24px;background:
+      radial-gradient(400px 200px at 50% 0%, rgba(255,194,77,.12), transparent 70%),var(--glass);
+    backdrop-filter:blur(6px);
+  }
+  .stock{display:inline-block;font-size:.82rem;color:var(--amber);border:1px solid rgba(255,194,77,.4);
+    border-radius:999px;padding:5px 14px;margin-bottom:18px;letter-spacing:.05em}
+  .old{color:var(--muted);text-decoration:line-through;font-size:1.1rem}
+  .now{font-family:var(--display);font-size:clamp(2.2rem,7vw,3.4rem);color:var(--amber);
+    text-shadow:0 0 24px rgba(255,194,77,.45);margin:6px 0 4px}
+  .now small{font-size:1rem;font-family:var(--jp);font-weight:700}
+  .limited{color:var(--muted);font-size:.86rem;margin-bottom:26px}
+  .buy{
+    font-family:var(--jp);font-weight:900;font-size:1.1rem;color:#160712;cursor:pointer;
+    border:none;border-radius:999px;padding:16px 42px;
+    background:linear-gradient(92deg,var(--pink),var(--amber));
+    box-shadow:0 12px 34px rgba(255,61,154,.4);
+    transition:transform .15s ease,filter .15s ease;
+  }
+  .buy:hover{transform:translateY(-2px);filter:brightness(1.07)}
+  .buy:active{transform:translateY(0)}
+  .buy:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+  .oops{margin-top:22px;min-height:1.6em;font-weight:700;color:var(--cyan)}
+
+  /* reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .review{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:22px}
+  .stars{color:var(--amber);letter-spacing:.15em;margin-bottom:10px}
+  .review p{font-size:.94rem;margin-bottom:12px}
+  .who{color:var(--muted);font-size:.82rem}
+
+  footer{padding:50px 0 70px;text-align:center;color:var(--muted);font-size:.8rem}
+  .disclaim{margin-top:8px;opacity:.7}
+
+  @media(max-width:720px){
+    .reasons,.reviews{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .rain{display:none}
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="rain" id="rain" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Next-Gen Rain Defense</div>
+    <div class="logo">Full Protect You</div>
+    <div class="tagline">Stay dry. Everywhere.</div>
+    <p class="sub">Rain doesn't only fall from above anymore — and neither does your protection.</p>
+
+    <figure class="hero-shot">
+      <img src="hero.png" alt="A man walking calmly inside a transparent dome umbrella on a rainy neon street while others struggle with ordinary umbrellas">
+    </figure>
+  </header>
+
+  <section>
+    <div class="kicker">Why it works</div>
+    <h2>It's not built like an umbrella.</h2>
+    <div class="reasons">
+      <article class="card">
+        <div class="num">01</div>
+        <h3>It never flips.</h3>
+        <p>The dome holds its shape in any gust. No more wrestling a turned-out umbrella or losing your view in the wind.</p>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <h3>Your bag stays dry.</h3>
+        <p>Your laptop, your books, that thing you just bought — all sealed inside the dome with you. Nothing gets wet.</p>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <h3>A clear view, always.</h3>
+        <p>It covers your whole body, yet the crystal-clear dome keeps the street, the signals, and the lights in full view.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="price-box">
+      <span class="stock">⚡ Almost gone — only 3 left</span>
+      <div class="old">Regular price $399</div>
+      <div class="now">$299 <small>today only</small></div>
+      <div class="limited">* This offer may end without notice.</div>
+      <button class="buy" id="buy">Buy now</button>
+      <div class="oops" id="oops" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Reviews</div>
+    <h2>★ 4.9 — from 2,847 reviews</h2>
+    <div class="reviews">
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“I can never go back to a normal umbrella. I actually look forward to rainy days now.”</p>
+        <div class="who">H.K. — Osaka</div>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“No more dirty looks for a dripping umbrella on a packed train. Those days are over.”</p>
+        <div class="who">T.M. — Tokyo</div>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Honestly, it keeps me drier than my girlfriend does. I trust it more, too.”</p>
+        <div class="who">R.S. — Kanagawa</div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    Full Protect You — Stay dry. Everywhere.
+    <div class="disclaim">* This is a parody ad created for a school project. The product is not real.</div>
+  </footer>
+</div>
+
+<script>
+  // rain
+  (function(){
+    var c=document.getElementById('rain');
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var n=window.innerWidth<600?40:80;
+    for(var i=0;i<n;i++){
+      var s=document.createElement('span');
+      s.style.left=Math.random()*100+'vw';
+      s.style.animationDuration=(0.5+Math.random()*0.6)+'s';
+      s.style.animationDelay=(-Math.random()*2)+'s';
+      s.style.opacity=0.3+Math.random()*0.5;
+      c.appendChild(s);
+    }
+  })();
+  // buy gag
+  document.getElementById('buy').addEventListener('click',function(){
+    this.disabled=true;
+    this.textContent='Processing…';
+    var oops=document.getElementById('oops');
+    setTimeout(function(){
+      document.getElementById('buy').textContent='Sold out';
+      oops.textContent='Sorry — we can\u2019t make them fast enough \uD83D\uDE4F Please wait for the next batch.';
+    },900);
+  });
+</script>
+</body>
+</html>
